@@ -5,9 +5,6 @@ const ContactForm = ({ addContact }) => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  //this.setState({ [name]: value });
-  //};
-
   const handleSubmit = e => {
     e.preventDefault();
     addContact(name, number);

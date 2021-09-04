@@ -15,22 +15,6 @@ export default function App() {
   ]);
   const [filter, setFilter] = useState('');
 
-  //componentDidMount() {
-  //console.log('App componentDidMount');
-  //const contacts = localStorage.getItem('contacts');
-  //const parsedContacts = JSON.parse(contacts);
-  //if (parsedContacts) {
-  //this.setState({ contacts: parsedContacts });
-  //}
-  //console.log(parsedContacts);
-  //}
-  //componentDidUpdate(prevProps, prevState) {
-  //console.log('App componentDidUpdate');
-  //if (this.state.contacts !== prevState.contacts) {
-  // console.log('Обновилось поле contacts');
-  //localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
-  //}
-  //}
   const addContactSubmit = (name, number) => {
     if (contacts.map(contact => contact.name.toLowerCase()).includes(name.toLowerCase().trim())) {
       alert(`${name} is already in contacts `);
@@ -45,23 +29,17 @@ export default function App() {
   };
 
   const changeFilter = e => {
-    console.log(e);
     setFilter(e.target.value);
   };
 
   const getVisibleContacts = () => {
-    console.log(filter);
     return contacts.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()));
   };
 
   const onDeleteContact = e => {
     const id = e.target.getAttribute('data-key');
 
-    setContacts(prevState => {
-      return {
-        contacts: prevState.contacts.filter(contact => contact.id !== id),
-      };
-    });
+    setContacts(prevState => prevState.filter(contact => contact.id !== id));
   };
 
   const visibleContacts = getVisibleContacts();
