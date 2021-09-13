@@ -25,9 +25,11 @@ export default function App() {
   }, [contacts]);
 
   const addContactSubmit = (name, number) => {
-    if (contacts.map(contact => contact.name.toLowerCase()).includes(name.toLowerCase().trim())) {
-      alert(`${name} is already in contacts `);
+    if (contacts.find(contact => contact.name === name)) {
+      alert(`${name} уже есть в списке ваших контактов`);
+      return;
     }
+
     const contact = {
       name,
       number,
